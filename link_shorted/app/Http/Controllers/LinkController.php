@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use Illuminate\Http\Request;
+use App\Models\Url;
+use App\Services\UrlShortenerService;
 
 class LinkController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
+{    
     public function index()
     {
-        //
+        $link = Link::all();
+        return view("link.index",compact("link"));
     }
 
     /**
@@ -20,6 +21,7 @@ class LinkController extends Controller
     public function create()
     {
         //
+        return "";
     }
 
     /**
@@ -28,6 +30,7 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         //
+        return "";
     }
 
     /**
@@ -38,20 +41,14 @@ class LinkController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
+   
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
         //
+        return "";
     }
 
     /**
@@ -60,5 +57,6 @@ class LinkController extends Controller
     public function destroy(string $id)
     {
         //
+        return "";
     }
 }
