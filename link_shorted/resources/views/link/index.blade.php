@@ -83,6 +83,7 @@
         <div class="modal-footer">
           <form action="{{route("link.delete")}}" method="POST">
             @csrf
+            @method('DELETE')
               @include('components.input',["type"=>"hidden","id"=>"id", "name"=>"id"])
               @include('components.button',["title"=>"Eliminar Datos","class"=>"btn btn-danger"])
               @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])  
