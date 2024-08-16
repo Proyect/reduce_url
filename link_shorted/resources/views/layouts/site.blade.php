@@ -3,7 +3,7 @@
 <html lang="es">
 
 <head>
-    <title>{{$site[0]->title ?? "Infrasoft Servicios Informaticos"}}</title>
+    <title>{{$site[0]->title ?? "Sistema"}}</title>
     <!-- Define Charset -->
     <meta charset="utf-8">
     <!-- Responsive Metatag -->
@@ -25,11 +25,11 @@
 @yield('CodesStyles')
 </head>
 <body>
-  <div class="position-absolute  top-50 start-50 text-center d-flex justify-content-center" >
+  <div class="position-absolute  top-50 start-50 text-center d-flex justify-content-center d-none" >
     <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status" id="preload">     
     </div>
     </div>
-    <div class="container d-none">
+    <div class="container ">
         <!-- Contact Header -->       
         <!-- Nav -->
       @yield('container')     
@@ -47,14 +47,7 @@
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script> 
     <script src="./media/js/table.js"></script>
-    <script>
-         $(document).ready(function(){
-          setTimeout(1000);
-          $("#preload").hide();
-          $(".container").show();	
-         }:      
-
-    </script>
+    
 @yield('footer')
 
 </body>

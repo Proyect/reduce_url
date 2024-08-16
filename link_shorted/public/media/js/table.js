@@ -1,7 +1,8 @@
 
-  function Load(url="json.php"){
+  function Load(data="/"){
     console.log("Load DataTable");
-    $.getJSON(url, function(data) {
+    console.log(url);
+    
       $.each(data, function(index, item) {
         const row = '<tr>' +
                       '<td>' + item.url+ '</td>' +
@@ -10,64 +11,52 @@
                               ' data-url ="'+item.url+'"  data-new_url ="'+item.new_url+'"   onclick="FormEdit(this)"></i> - <i class="bi bi-x-square text-danger" title="Delete" name="del" data-id ="'+item.id+'" onclick="FormDelete()"></i> </td>' +
                       '</tr>';
           //console.log(row);
-          $('tbody').append(row);         
-              
+          $('tbody').append(row);               
         });
-        $('#data').DataTable();
-      }); console.log("Done");
+        $('#data').DataTable();      
   };
 
-    $(document).ready(function(){         
-        const url = 'json.php';   
+    $(document).ready(function(){    
         $("#modal_data").modal('hide');
         Load(url);
       });
 
-  function FormEdit(){
+  function FormEdit(element){
     console.log("Show Edit Form");
     //Edit   
     $('[name="edt"]').on('click', function(){
       let item = $(this).data();
       console.log(item);
       $("#modal_data #id").val(item.id);      
-      $("#modal_data #name").val(item.firstName); 
-      $("#modal_data #email").val(item.email);       
-      $("#modal_data #lastName").val(item.lastName);
-      $("#modal_data #tel").val(item.Phone);    
-    }); 
-     
+      $("#modal_data #url").val(item.url); 
+      $("#modal_data #new_url").val(item.new_url);
+      
      $("#modal_data").modal('show');   
-  };
+    })
+    };
   
   //send datas
-  $("#send_data").submit(function (event) {
+  /*$("#send_data").submit(function (event) {
     event.preventDefault();
     let data = {
       id:$("#modal_data #id").val(),      
-      name:$("#modal_data #name").val(), 
-      $("#modal_data #lastName").val(item.lastName);
-      $("#modal_data #email").val(item.email);       
-      
-      $("#modal_data #tel").val(item.Phone); 
+      url:$("#modal_data #url").val(), 
+      new_url:$("#modal_data #new_url").val(),
     }
-  });  
+  });  */
   
-      $(document).ready(function(){        
-       // FormEdit();    
-      });
       
   function  FormDelete(params) {
     console.log("Show delete form");
         //delete
         $("[name='del']").on("click",function(){
-          console.log("Delete");
+          let item = $(this).data();
+          console.log(item);
+          $("#modal_data #id").val(item.id); 
           $("#modalDelete").modal("show");
         });
-  };
-      $(document).ready(function () {
-        FormDelete();
-      });   
-
+    };
+     
         
      
 

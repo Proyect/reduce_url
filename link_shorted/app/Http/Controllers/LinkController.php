@@ -2,26 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Link;
 use Illuminate\Http\Request;
-use App\Models\Url;
-use App\Services\UrlShortenerService;
+use App\Models\Link;
+use Illuminate\Support\Str;
 
 class LinkController extends Controller
 {    
     public function index()
     {
         $link = Link::all();
+       // dd($link);
         return view("link.index",compact("link"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show(){
+        $link = collect(Link::all());
+        return json_encode($link);
+    }    
+    
+    public function create(Request $request)
     {
-        //
-        return "";
+        $request->validate([
+            'url' => 'required|url'
+        ]);
+        $shortCode = Str::random(8);        
+        // Asegurarse de que el shortCode sea único
+        while (Link::where('new_url', $shortCode)->exists()) {
+            $shortCode = Str::random(8);
+        }
+        if (Link::created([
+            "url"=>$request->url,
+            "new_url"=>$shortCode
+        ])) {
+            return response()->json(["new_url"=>$shortCode]);
+        } else {
+            return response()->json(["error"=>"No se pudo crear el link"]);
+        }        
     }
 
     /**
@@ -33,30 +49,18 @@ class LinkController extends Controller
         return "";
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+  
+    public function update(Request $request)
     {
-        //
+        //dd($request->all());
+        $link = Link::find($request->id);        
+        return $link->save($request->all());
     }
 
-   
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-        return "";
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
-        //
-        return "";
+        $link = Link::find($id);
+        return $link->delete();        
     }
 }

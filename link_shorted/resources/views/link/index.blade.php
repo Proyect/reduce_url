@@ -3,7 +3,16 @@
 @section('container')  
 
     <h2>Links</h2>
-@include('components.button')
+    <div class="row">
+    <form action="{{route('link.create')}}" method="post">
+      @csrf
+      <div class="form-group col">     
+          @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"])          
+          @include('components.button',["title"=>"Crear URL reducida"])
+        </div>            
+    </form>
+  </div> 
+
 <table id="data" class="table table-striped w-100">
     <thead>
       <tr>
@@ -28,48 +37,29 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add New Data</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Data</h5>          
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
         
-        <h2>Registration Form</h2>
-          <form id="registration-form" class="form">
+        <h2>Actualizar Datos</h2>
+          <form id="registration-form" class="form" action="{{route("link.update")}}" method="POST">
             @csrf 
             <div class="row">
-            <div class="col">
-                <label for="name">ID:</label>
-                <input type="text" id="id" name="id" class="form-control w50" required>
-            </div>  
-            <div class="col">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" class="form-control w50" required>
-            </div>
-            <div class="col">
-              <label for="name">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" class="form-control w50" required>
-            </div>
-            </div>
-            <div class="row">
               <div class="col">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
+                @include('components.input',["type"=>"text","id"=>"id", "name"=>"id", "title"=>"id","required"=>"readonly"])
+                @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"]) 
               </div>
-              <div class="col">
-                <label for="tel">Tel:</label>
-                <input type="tel" id="tel" name="tel" class="form-control" required>        
+                <div class="col">
+                  @include('components.input',["id"=>"new_url","name"=>"new_url","type"=>"url","title"=>"URL Reducida"])                
+                </div> 
               </div>
             
-            </div>
             <hr/>
             <div class="row">
               <div class="col text-center">
-                <button  class="btn btn-primary btn-outline-light fw-bold" id="updateData">
-                <i class="bi bi-pencil-fill" title="Edit" name="edt"></i> Register
-                </button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="send_data">
-                  <i class="bi bi-x-square"></i></i> Close
-                </button> 
+                @include('components.button',["title"=>"Actualizar Datos"])
+                @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])          
               </div>
             </div>      
           </form>
@@ -88,17 +78,26 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        Are you sure to delete the datas?
+        Confirma la eliminacion de la URL?  
         </div>
         <div class="modal-footer">
-          <form action="">
+          <form action="{{route("link.delete")}}" method="POST">
             @csrf
-            <input type="hidden" name="id" id="id" value="0">
-            <button type="button" class="btn btn-danger btn-outline-light">Save</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>  
+              @include('components.input',["type"=>"hidden","id"=>"id", "name"=>"id"])
+              @include('components.button',["title"=>"Eliminar Datos","class"=>"btn btn-danger"])
+              @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])  
            </form>      
         </div>
       </div>
     </div>
   </div>
+  
+  @endsection
+  @section('footer')
+  <script>
+    var url = @json($link);
+    
+    
+  </script>
+      
   @endsection
