@@ -45,12 +45,14 @@
         <h2>Actualizar Datos</h2>
           <form id="registration-form" class="form" action="{{route("link.update")}}" method="POST">
             @csrf 
-            <div class="row">
-              <div class="col">
-                @include('components.input',["type"=>"text","id"=>"id", "name"=>"id", "title"=>"id","required"=>"readonly"])
+            <div class="">
+              <div class="row">
+               @include('components.input',["type"=>"text","id"=>"id", "name"=>"id", "title"=>"id","required"=>"readonly"])
+              </div>                             
+              <div class="row">  
                 @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"]) 
               </div>
-                <div class="col">
+                <div class="row">
                   @include('components.input',["id"=>"new_url","name"=>"new_url","type"=>"url","title"=>"URL Reducida"])                
                 </div> 
               </div>
@@ -81,10 +83,12 @@
         Confirma la eliminacion de la URL?  
         </div>
         <div class="modal-footer">
-          <form action="{{route("link.delete")}}" method="POST">
+          <form action="{{route("link.delete")}}" method="POST" id="delete-form">
             @csrf
             @method('DELETE')
-              @include('components.input',["type"=>"hidden","id"=>"id", "name"=>"id"])
+              @include('components.input',["title"=>"id","type"=>"text","id"=>"id", "name"=>"id","required"=>"readonly"])
+              @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL","required"=>"readonly"])
+              @include('components.input',["id"=>"new_url","name"=>"new_url","type"=>"url","title"=>"URL Reducida","required"=>"readonly"])
               @include('components.button',["title"=>"Eliminar Datos","class"=>"btn btn-danger"])
               @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])  
            </form>      
@@ -92,6 +96,30 @@
       </div>
     </div>
   </div>
+
+
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#toast">
+    Launch toast
+  </button>
+  
+  <!-- Notifications -->
+  <div class="modal fade" id="toast" tabindex="-1" aria-labelledby="toastLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="toastLabel">Notificaciones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="body_toast">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
   @endsection
   @section('footer')

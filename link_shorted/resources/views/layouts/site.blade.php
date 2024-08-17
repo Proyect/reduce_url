@@ -28,8 +28,8 @@
   <div class="position-absolute  top-50 start-50 text-center d-flex justify-content-center d-none" >
     <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status" id="preload">     
     </div>
-    </div>
-    <div class="container ">
+  </div>
+    <div class="container">
         <!-- Contact Header -->       
         <!-- Nav -->
       @yield('container')     

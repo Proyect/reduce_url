@@ -1,4 +1,4 @@
-<div class="{{$class ?? "input-group mb-3 p-2 col"}}">
+<div class="{{$class ?? "input-group mx-auto p-2 m-2 col"}}">
     <div class="input-group-prepend">
       <span class="input-group-text" >{{$title ?? ""}}</span>
     </div>
