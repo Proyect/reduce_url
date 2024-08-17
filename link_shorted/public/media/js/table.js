@@ -38,12 +38,7 @@
   //send datas update
   $("#registration-form").submit(function (event) {
     event.preventDefault();
-    let data = {
-      _token: $("#modal_data #_token").val(),
-      id:$("#modal_data #id").val(),      
-      url:$("#modal_data #url").val(), 
-      new_url:$("#modal_data #new_url").val(),
-    }
+    
     var form = $(this).serialize(); 
     $.ajax({
       type:"POST",
@@ -57,6 +52,7 @@
       success: function(result){
         console.log(result);       
         location.reload();
+        setTimeout(10000);
         $("#preload").hide();
         $("#container").show();
         $("#toast #body_toast").text("Datos Cargados correctamente");
@@ -65,6 +61,7 @@
       error:function(){
         console.log("Error");       
         location.reload();
+        setTimeout(10000);
         $("#container").show();
         $("#preload").hide();
         $("#modal_data").modal('hide');        
@@ -89,6 +86,42 @@
         });
     };
      
+   //send datas delete
+  $("#delete-form").submit(function (event) {
+    event.preventDefault();
+    
+    var form = $(this).serialize(); 
+    $.ajax({
+      type:"POST",
+      url:"link/delete",
+      data: form,
+      beforeSend: function () {
+        console.log("Enviando Informacion");
+        $("#container").hide();
+        $("#preload").show();        
+    },
+      success: function(result){
+        console.log(result);       
+        location.reload();
+        setTimeout(10000);
+        $("#preload").hide();
+        $("#container").show();
+        $("#toast #body_toast").text("Datos Eliminados correctamente");
+        $("#toast").modal("show");      
+      },
+      error:function(){
+        console.log("Error");       
+        location.reload();
+        setTimeout(10000);
+        $("#container").show();
+        $("#preload").hide();
+        $("#modal_data").modal('hide');        
+        $("#toast [class='modal-body']").text("Error en la eliminacion de datos");
+        $("#toast").modal("show");        
+      }
+
+    });
+  });  
         
      
 

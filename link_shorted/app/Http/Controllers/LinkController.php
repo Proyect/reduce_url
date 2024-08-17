@@ -38,7 +38,7 @@ class LinkController extends Controller
         while (Link::where('new_url', $shortCode)->exists()) {
             $shortCode = Str::random(8);
         }
-        $page = $page.$shortCode; print($page);
+        $page = $page.$shortCode; 
 
         $link = Link::insert([
             "url"=>$request->url,
@@ -81,7 +81,13 @@ class LinkController extends Controller
     public function destroy(Request $request)
     {
         $link = Link::find($request->id);
-        return $link->delete();        
+        if ($link->delete()) {
+            $je="Datos Eliminados correctamente";
+        } else {
+            $mje = "Error al eliminar los datos";
+        }
+        
+        return response()->json(["mje"=>$mje]);       
     }
 
     public function redirect($code)
