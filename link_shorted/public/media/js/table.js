@@ -1,8 +1,8 @@
 
   function Load(data="/"){
     console.log("Load DataTable");
-    console.log(url);
-    
+    console.log(data);
+    $('tbody').text();
       $.each(data, function(index, item) {
         const row = '<tr>' +
                       '<td>' + item.url+ '</td>' +
@@ -51,7 +51,8 @@
     },
       success: function(result){
         console.log(result);       
-        location.reload();
+        Load("link/list/");
+        //location.reload();
         setTimeout(10000);
         $("#preload").hide();
         $("#container").show();
@@ -60,7 +61,8 @@
       },
       error:function(){
         console.log("Error");       
-        location.reload();
+        Load("link/list/");
+        //location.reload();
         setTimeout(10000);
         $("#container").show();
         $("#preload").hide();

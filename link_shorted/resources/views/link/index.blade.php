@@ -97,12 +97,12 @@
     </div>
   </div>
 
-
+<!--
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#toast">
     Launch toast
   </button>
   
-  <!-- Notifications -->
+   Notifications -->
   <div class="modal fade" id="toast" tabindex="-1" aria-labelledby="toastLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

@@ -92,7 +92,7 @@ class LinkController extends Controller
 
     public function redirect($code)
     {
-        $url = Url::where('link', $code)->firstOrFail();
+        $url = Link::where('link', $code)->firstOrFail();
 
         return redirect($url->new_link);
     }
