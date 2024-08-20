@@ -4,7 +4,7 @@
 
     <h2>Links</h2>
     <div class="row">
-    <form action="{{route('link.create')}}" method="post">
+    <form  method="post" id="new_link">
       @csrf
       <div class="form-group col">     
           @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"])          
@@ -33,16 +33,15 @@
   </table>
   
  <!-- Modal New and edit-->
-<div class="modal fade" id="modal_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="modal_data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Data</h5>          
+        <div class="modal-header  bg-primary bg-gradient text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Actualizar Datos</h5>          
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        
-        <h2>Actualizar Datos</h2>
+                
           <form id="registration-form" class="form" action="{{route("link.update")}}" method="POST">
             @csrf 
             <div class="">
@@ -72,16 +71,14 @@
   </div>
   
   <!-- Modal Are you Segure?-->
-<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="" aria-hidden="true">
+<div class="modal" id="modalDelete" tabindex="-1" aria-labelledby="" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="idAlert">Alert</h1>
+        <div class="modal-header bg-danger bg-gradient text-white">
+          <h1 class="modal-title fs-5" id="idAlert">Confirma la eliminacion de la URL?  </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-        Confirma la eliminacion de la URL?  
-        </div>
+        
         <div class="modal-footer">
           <form action="{{route("link.delete")}}" method="POST" id="delete-form">
             @csrf
@@ -103,10 +100,10 @@
   </button>
   
    Notifications -->
-  <div class="modal fade" id="toast" tabindex="-1" aria-labelledby="toastLabel" aria-hidden="true">
+  <div class="modal" id="toast" tabindex="-1" aria-labelledby="toastLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header bg-primary bg-gradient text-white">
           <h5 class="modal-title" id="toastLabel">Notificaciones</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>

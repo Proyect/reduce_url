@@ -15,8 +15,8 @@ class LinkController extends Controller
         return view("link.index",compact("link"));
     }
 
-    public function show(){
-        $link = collect(Link::all());
+    public function show(Request $request){
+        $link = Link::all(); 
         return json_encode($link);
     }    
     
@@ -81,8 +81,9 @@ class LinkController extends Controller
     public function destroy(Request $request)
     {
         $link = Link::find($request->id);
+
         if ($link->delete()) {
-            $je="Datos Eliminados correctamente";
+            $mje="Datos Eliminados correctamente";
         } else {
             $mje = "Error al eliminar los datos";
         }
