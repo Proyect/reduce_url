@@ -28,7 +28,7 @@ class LinkController extends Controller
         
         $find = strpos($request->url,"/",9);
         if ($find==0) {
-           $page = $request->url +"/";
+           $page = $request->url."/";
         } else {
            $page = substr($request->url, 0, $find+1);
         }
@@ -52,9 +52,7 @@ class LinkController extends Controller
         }        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(Request $request)
     {
         //

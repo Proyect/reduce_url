@@ -4,10 +4,12 @@
 
     <h2>Links</h2>
     <div class="row">
-    <form  method="post" id="new_link">
+    <form  method="POST" id="new_link" action="{{route("link.create")}}">
       @csrf
-      <div class="form-group col">     
-          @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"])          
+      <div class="col">     
+          @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL"])  
+      </div>
+      <div class="col">        
           @include('components.button',["title"=>"Crear URL reducida"])
         </div>            
     </form>
@@ -60,7 +62,7 @@
             <div class="row">
               <div class="col text-center">
                 @include('components.button',["title"=>"Actualizar Datos"])
-                @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])          
+                @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary btn-outline-light fw-bold","add"=>"data-bs-dismiss=modal"])          
               </div>
             </div>      
           </form>
@@ -86,8 +88,8 @@
               @include('components.input',["title"=>"id","type"=>"text","id"=>"id", "name"=>"id","required"=>"readonly"])
               @include('components.input',["id"=>"url","name"=>"url","type"=>"url","title"=>"URL","required"=>"readonly"])
               @include('components.input',["id"=>"new_url","name"=>"new_url","type"=>"url","title"=>"URL Reducida","required"=>"readonly"])
-              @include('components.button',["title"=>"Eliminar Datos","class"=>"btn btn-danger"])
-              @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary","add"=>"data-bs-dismiss=modal"])  
+              @include('components.button',["title"=>"Eliminar Datos","class"=>"btn btn-danger fw-bold"])
+              @include('components.button',["type"=>"button","title"=>"Cancelar","class"=>"btn btn-secondary btn-outline-light fw-bold","add"=>"data-bs-dismiss=modal"])  
            </form>      
         </div>
       </div>
@@ -111,7 +113,7 @@
           ...
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>          
+          <button type="button" class="btn btn-secondary btn-outline-light fw-bold" data-bs-dismiss="modal">Close</button>          
         </div>
       </div>
     </div>

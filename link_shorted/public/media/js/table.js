@@ -34,7 +34,7 @@
         Load(url);
       });
   
-  $("new_link").submit(function (event) {
+  $("#new_link").submit(function (event) {
     event.preventDefault();
 
     var form = $(this).serialize(); 
@@ -60,7 +60,7 @@
         setTimeout(function () {
           $('#toast').modal('hide');     
           $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();   console.log("Ocultando toast");
+          $('.modal-backdrop').remove();   
         },5000);   
       },
       error:function(){
@@ -76,7 +76,7 @@
         setTimeout(function () {
           $('#toast').modal('hide');     
           $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();   console.log("Ocultando toast");
+          $('.modal-backdrop').remove();   
         },5000); 
       }
 
@@ -190,7 +190,7 @@
         setTimeout(function () {
           $('#toast').modal('hide');     
           $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();   console.log("Ocultando toast");
+          $('.modal-backdrop').remove();   
         },5000); 
 
       },
@@ -207,7 +207,7 @@
         setTimeout(function () {
           $('#toast').modal('hide');     
           $('body').removeClass('modal-open');
-          $('.modal-backdrop').remove();   console.log("Ocultando toast");
+          $('.modal-backdrop').remove();   
         },5000); 
       }
 
